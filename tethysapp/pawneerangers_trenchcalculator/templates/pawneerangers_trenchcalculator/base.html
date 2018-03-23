@@ -1,0 +1,53 @@
+{% extends "tethys_apps/app_base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}{{ tethys_app.name }}{% endblock %}
+
+{% block app_icon %}
+  {# The path you provided in your app.py is accessible through the tethys_app.icon context variable #}
+  <img src="{% static tethys_app.icon %}">
+{% endblock %}
+
+{# The name you provided in your app.py is accessible through the tethys_app.name context variable #}
+{% block app_title %}{{ tethys_app.name }}{% endblock %}
+
+{% block app_navigation_items %}
+  {% url 'pawneerangers_trenchcalculator:home' as home_url %}
+  {% url 'pawneerangers_trenchcalculator:map_view' as map_url %}
+  {% url 'pawneerangers_trenchcalculator:map_view_buffer' as mapbuffer_url %}
+  {% url 'pawneerangers_trenchcalculator:map_view_slope' as mapslope_url %}
+  {% url 'pawneerangers_trenchcalculator:map_view_split' as mapsplit_url %}
+  {% url 'pawneerangers_trenchcalculator:data_services' as data_url %}
+  {% url 'pawneerangers_trenchcalculator:about' as about_url %}
+  {% url 'pawneerangers_trenchcalculator:proposal' as proposal_url %}
+  {% url 'pawneerangers_trenchcalculator:mockups' as mockups_url %}
+  <li class="title">Navigation</li>
+  <li class="{% if request.path == home_url %}active{% endif %}"><a href="{{ home_url }}">Home</a></li>
+  <li class="{% if request.path == map_url %}active{% endif %}"><a href="{{ map_url }}">Map View</a></li>
+  <li class="{% if request.path == mapbuffer_url %}active{% endif %}"><a href="{{ mapbuffer_url }}">Map View (Buffer)</a></li>
+  <li class="{% if request.path == mapslope_url %}active{% endif %}"><a href="{{ mapslope_url }}">Map View (Slope Calculator)</a></li>
+  <li class="{% if request.path == mapsplit_url %}active{% endif %}"><a href="{{ mapsplit_url }}">Map View (Split Line)</a></li>
+  <li class="{% if request.path == data_url %}active{% endif %}"><a href="{{ data_url }}">Data Services</a></li>
+  <li class="{% if request.path == about_url %}active{% endif %}"><a href="{{ about_url }}">About</a></li>
+  <li class="{% if request.path == proposal_url %}active{% endif %}"><a href="{{ proposal_url }}">Proposal</a></li>
+  <li class="{% if request.path == mockups_url %}active{% endif %}"><a href="{{ mockups_url }}">Mockups</a></li>
+{% endblock %}
+
+{% block app_content %}
+{% endblock %}
+
+{% block app_actions %}
+{% endblock %}
+
+{% block content_dependent_styles %}
+  {{ block.super }}
+  <link href="{% static 'pawneerangers_trenchcalculator/css/main.css' %}" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
+{% endblock %}
+
+{% block scripts %}
+  {{ block.super }}
+  <script src="{% static 'pawneerangers_trenchcalculator/js/main.js' %}" type="text/javascript"></script>
+  <script src="https://js.arcgis.com/4.6/"></script>
+{% endblock %}
