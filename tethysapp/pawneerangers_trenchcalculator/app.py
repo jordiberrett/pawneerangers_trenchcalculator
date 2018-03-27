@@ -8,11 +8,11 @@ class TrenchCalculator(TethysAppBase):
 
     name = 'Trench Calculator'
     index = 'pawneerangers_trenchcalculator:home'
-    icon = 'pawneerangers_trenchcalculator/images/icon.gif'
+    icon = 'pawneerangers_trenchcalculator/images/pr.jpg'
     package = 'pawneerangers_trenchcalculator'
     root_url = 'pawneerangers-trenchcalculator'
     color = '#2c3e50'
-    description = 'Calculates import and export quantities for pipe installation trenches.'
+    description = 'Calculates import and export quantities for pipe installation trenches. Created by the Pawnee Rangers, "Be a Man."'
     tags = 'Construction'
     enable_feedback = False
     feedback_emails = []
